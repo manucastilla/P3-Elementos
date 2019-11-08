@@ -20,5 +20,42 @@
 ;             RAM[ 9] : 0
 ;             RAM[10] : 11
 ;             RAM[11] : 2
+;leaw $0, %A
+;movw (%A), %S
+;leaw $1, %A
+;movw (%A), %D
+;leaw $2, %A
+;movw $0, (%A)
+;
+;movw %S, %A
+;subw %S, ()
+;
+;
+;
 ;===============================================
+
+
+
+leaw $0, %A
+movw %A, %S
+
+leaw $4, %A
+movw %A, %D
+
+LOOP:
+subw (%A), %S, %S
+leaw $PROXIMO, %A
+jg %S
+nop
+
+PROXIMO:
+	incw %D
+	movw %D, (%A)
+	subw (%A), %S, %S
+	leaw $SEGUNDO, %A
+	jg %S
+	nop
+
+SEGUNDO:
+
 
